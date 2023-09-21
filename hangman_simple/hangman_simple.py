@@ -92,7 +92,7 @@ def choixMotMystere(listeMotsMystere):
 
 def demandeLettreUtilisateur():
     print("Veuillez choisir une lettre à deviner")
-    return input()
+    return input().strip()[0].lower()
 
 def resultatMotMystereInitial(motMystere):
     return '_' * len(motMystere)
@@ -132,7 +132,7 @@ while(nombreVie > 0 and motMystere != resultatMotMystere):
     lettreChoisiEstValide = False
     positionLettreAVerifier = 0
 
-    lettreChoisi = demandeLettreUtilisateur().strip()[0].lower()
+    lettreChoisi = demandeLettreUtilisateur()
     nettoyerConsole()
 
     for lettre in motMystere:
