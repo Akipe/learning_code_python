@@ -82,7 +82,6 @@ LISTE_MOTS_MYSTERE = [
     "baboon",
     "camel"
 ]
-NOMBRE_VIE_MAX = 6
 
 # Fonctions
 
@@ -91,8 +90,13 @@ def choixMotMystere(listeMotsMystere):
     return listeMotsMystere[positionMotChoisi]
 
 def demandeLettreUtilisateur():
-    print("Veuillez choisir une lettre à deviner")
-    return input().strip()[0].lower()
+    entreeInvalide = True
+
+    while (entreeInvalide):
+        print("Veuillez choisir une lettre à deviner")
+        entreeUtilisateur = input().strip()
+        entreeInvalide = not entreeUtilisateur
+    return entreeUtilisateur[0].lower()
 
 def resultatMotMystereInitial(motMystere):
     return '_' * len(motMystere)
@@ -122,9 +126,12 @@ def nettoyerConsole():
 def afficherPendu(nombreVieRestant):
     print(REPRESENTATION_ASCII[nombreVieRestant])
 
+def getNombreVie():
+    return len(REPRESENTATION_ASCII) - 1
+
 # Application
 
-nombreVie = NOMBRE_VIE_MAX
+nombreVie = getNombreVie()
 motMystere = choixMotMystere(LISTE_MOTS_MYSTERE)
 resultatMotMystere = resultatMotMystereInitial(motMystere)
 
