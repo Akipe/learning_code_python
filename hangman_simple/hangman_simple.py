@@ -85,11 +85,11 @@ LISTE_MOTS_MYSTERE = [
 
 # Fonctions
 
-def choixMotMystere(listeMotsMystere):
+def choixMotMystere(listeMotsMystere: list[str]) -> str:
     positionMotChoisi = random.randint(0, len(listeMotsMystere) - 1)
     return listeMotsMystere[positionMotChoisi]
 
-def demandeLettreUtilisateur():
+def demandeLettreUtilisateur() -> str:
     entreeInvalide = True
 
     while (entreeInvalide):
@@ -98,15 +98,15 @@ def demandeLettreUtilisateur():
         entreeInvalide = not entreeUtilisateur
     return entreeUtilisateur[0].lower()
 
-def resultatMotMystereInitial(motMystere):
+def resultatMotMystereInitial(motMystere: str) -> str:
     return '_' * len(motMystere)
 
-def remplacerMasqueParLettre(resultatMotMystere, lettre, position):
+def remplacerMasqueParLettre(resultatMotMystere: str, lettre: str, position: int) -> str:
     lettresResultatMotMystere = list(resultatMotMystere)
     lettresResultatMotMystere[position] = lettre
     return "".join(lettresResultatMotMystere)
 
-def devinerLettreMotMystere(motMystere, lettreChoisiParUtilisateur, resultatMotMystere):
+def devinerLettreMotMystere(motMystere: str, lettreChoisiParUtilisateur: str, resultatMotMystere: str) -> str:
     lettreDansMotMystere = False
     positionLettre = 0
 
@@ -120,13 +120,13 @@ def devinerLettreMotMystere(motMystere, lettreChoisiParUtilisateur, resultatMotM
 
     return lettreDansMotMystere
 
-def nettoyerConsole():
+def nettoyerConsole() -> None:
     os.system('cls' if os.name=='nt' else 'clear')
 
-def afficherPendu(nombreVieRestant):
+def afficherPendu(nombreVieRestant: int) -> None:
     print(REPRESENTATION_ASCII[nombreVieRestant])
 
-def getNombreVie():
+def getNombreVie() -> int:
     return len(REPRESENTATION_ASCII) - 1
 
 # Application
